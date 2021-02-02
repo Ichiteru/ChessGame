@@ -1,9 +1,16 @@
 package entity;
 
+import chessboard.Board;
+import chessboard.Coordinate;
+import service.AbleToMoveFigure;
+import service.CorrectInputChecker;
+import service.FigureChooser;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-public class Player {
+public class Player implements AbleToMoveFigure {
 
     private String team;
     private String nickname;
@@ -37,5 +44,30 @@ public class Player {
 
     public void setTeam(String team) {
         this.team = team;
+    }
+
+    @Override
+    public void moveFigure(Board board) {
+        Scanner in = new Scanner(System.in);
+        String startPosition = null;
+        String finalPosition = null;
+        Coordinate startCoordinate;
+        Coordinate endCoordinate;
+        Figure chosenFigure;
+        do {
+                do {
+                    System.out.println("Укажите координаты фигуры, которой хотите ходить: ");
+                    startPosition = in.nextLine();
+                    }   while (!CorrectInputChecker.checkInputString(startPosition));
+                startCoordinate = new Coordinate(startPosition.charAt(1), startPosition.charAt(0));
+                chosenFigure = FigureChooser.getFigureByCoordinate(board, startCoordinate);
+        }   while(chosenFigure == null || chosenFigure.getTeam() != this.team);
+
+        do {
+            System.out.println("Укажите координату, в которую хотите ходить: ");
+            finalPosition = in.nextLine();
+        } while (!CorrectInputChecker.checkInputString(finalPosition));
+        endCoordinate = new Coordinate(finalPosition.charAt(1), finalPosition.charAt(0));
+        board.change(chosenFigure,startCoordinate,endCoordinate);
     }
 }

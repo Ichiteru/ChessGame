@@ -1,8 +1,9 @@
 package chessboard;
 
 import entity.*;
+import service.Changeable;
 
-public class Board {
+public class Board implements Changeable {
 
     private Coordinate positions[] = new Coordinate[64];
 
@@ -90,4 +91,16 @@ public class Board {
     }
 
 
+    @Override
+    public void change(Figure figure, Coordinate start, Coordinate end) {
+        for (Coordinate boardPosition :
+             this.positions) {
+            if (boardPosition.getLetter() == start.getLetter() && boardPosition.getDigit() == start.getDigit()){
+                boardPosition.setFigure(null);
+            }
+            if (boardPosition.getLetter() == end.getLetter() && boardPosition.getDigit() == end.getDigit()){
+                boardPosition.setFigure(figure);
+            }
+        }
+    }
 }

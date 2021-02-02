@@ -1,7 +1,8 @@
 package entity;
 
+import chessboard.Board;
 import chessboard.Coordinate;
-import strategy.MoveStrategy;
+import service.Changeable;
 
 public class Figure {
 
@@ -28,4 +29,5 @@ public class Figure {
     public void setTeam(String team) {
         this.team = team;
     }
+
 }
