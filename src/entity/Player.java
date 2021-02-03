@@ -5,6 +5,7 @@ import chessboard.Coordinate;
 import service.AbleToMoveFigure;
 import service.CorrectInputChecker;
 import service.FigureChooser;
+import strategy.MoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +55,7 @@ public class Player implements AbleToMoveFigure {
         Coordinate startCoordinate;
         Coordinate endCoordinate;
         Figure chosenFigure;
+        MoveStrategy.setMoveOptions(board);
         do {
                 do {
                     System.out.println("Укажите координаты фигуры, которой хотите ходить: ");
@@ -64,10 +66,14 @@ public class Player implements AbleToMoveFigure {
         }   while(chosenFigure == null || chosenFigure.getTeam() != this.team);
 
         do {
-            System.out.println("Укажите координату, в которую хотите ходить: ");
-            finalPosition = in.nextLine();
-        } while (!CorrectInputChecker.checkInputString(finalPosition));
-        endCoordinate = new Coordinate(finalPosition.charAt(1), finalPosition.charAt(0));
+
+                do {
+                    System.out.println("Укажите координату, в которую хотите ходить: ");
+                    finalPosition = in.nextLine();
+                    }    while (!CorrectInputChecker.checkInputString(finalPosition));
+                endCoordinate = new Coordinate(finalPosition.charAt(1), finalPosition.charAt(0));
+
+        }   while(!MoveStrategy.isPositionCorrespond(endCoordinate, chosenFigure));
         board.change(chosenFigure,startCoordinate,endCoordinate);
     }
 }
