@@ -28,22 +28,24 @@ public class Elephant extends Figure implements Moveable {
         while (nomineePosition >=0 && nomineePosition < 64){
             if (board.getPositions()[nomineePosition].getLetter() == 'A'
                     || board.getPositions()[nomineePosition].getDigit() == '8') {
-                if (board.getPositions()[nomineePosition].getFigure().getTeam() == this.getTeam()) {
+                if(board.getPositions()[nomineePosition].getFigure() == null){
+                    getMoveOptions().add(board.getPositions()[nomineePosition]);
                 }
-                else {
+                if(board.getPositions()[nomineePosition].getFigure() != null &&
+                        board.getPositions()[nomineePosition].getFigure().getTeam() != this.getTeam()){
                     getMoveOptions().add(board.getPositions()[nomineePosition]);
                 }
                 break;
             }
-            if (board.getPositions()[nomineePosition].getFigure().getTeam() == this.getTeam()){
-                break;
-            }
-            if (board.getPositions()[nomineePosition].getFigure().getTeam() != this.getTeam() &&
-                    board.getPositions()[nomineePosition].getFigure() != null){
-                getMoveOptions().add(board.getPositions()[nomineePosition]);
-                break;
-            }
-            else {
+            if (board.getPositions()[nomineePosition].getFigure() != null) {
+                if (board.getPositions()[nomineePosition].getFigure().getTeam() == this.getTeam()){
+                    break;
+                }
+                if (board.getPositions()[nomineePosition].getFigure().getTeam() != this.getTeam()){
+                    getMoveOptions().add(board.getPositions()[nomineePosition]);
+                    break;
+                }
+            } if (board.getPositions()[nomineePosition].getFigure() == null) { // if == null ?
                 getMoveOptions().add(board.getPositions()[nomineePosition]);
                 nomineePosition -= 9;
             }
@@ -52,46 +54,50 @@ public class Elephant extends Figure implements Moveable {
         while (nomineePosition >=0 && nomineePosition < 64){
             if (board.getPositions()[nomineePosition].getLetter() == 'H'
                     || board.getPositions()[nomineePosition].getDigit() == '1') {
-                if (board.getPositions()[nomineePosition].getFigure().getTeam() == this.getTeam()) {
+                if(board.getPositions()[nomineePosition].getFigure() == null){
+                    getMoveOptions().add(board.getPositions()[nomineePosition]);
                 }
-                else {
+                if(board.getPositions()[nomineePosition].getFigure() != null &&
+                        board.getPositions()[nomineePosition].getFigure().getTeam() != this.getTeam()){
                     getMoveOptions().add(board.getPositions()[nomineePosition]);
                 }
                 break;
             }
-            if (board.getPositions()[nomineePosition].getFigure().getTeam() == this.getTeam()){
-                break;
-            }
-            if (board.getPositions()[nomineePosition].getFigure().getTeam() != this.getTeam() &&
-                    board.getPositions()[nomineePosition].getFigure() != null){
-                getMoveOptions().add(board.getPositions()[nomineePosition]);
-                break;
-            }
-            else {
+            if (board.getPositions()[nomineePosition].getFigure() != null) {
+                if (board.getPositions()[nomineePosition].getFigure().getTeam() == this.getTeam()){
+                    break;
+                }
+                if (board.getPositions()[nomineePosition].getFigure().getTeam() != this.getTeam()){
+                    getMoveOptions().add(board.getPositions()[nomineePosition]);
+                    break;
+                }
+            } else {
                 getMoveOptions().add(board.getPositions()[nomineePosition]);
                 nomineePosition += 9;
             }
         }
-        nomineePosition = positionNumber - 7;
+        nomineePosition = positionNumber - 7; // правильный вариант
         while (nomineePosition >=0 && nomineePosition < 64){
             if (board.getPositions()[nomineePosition].getLetter() == 'H'
                     || board.getPositions()[nomineePosition].getDigit() == '8') {
-                if (board.getPositions()[nomineePosition].getFigure().getTeam() == this.getTeam()) {
-                }
-                else {
+                if(board.getPositions()[nomineePosition].getFigure() == null){
                     getMoveOptions().add(board.getPositions()[nomineePosition]);
                 }
+                if(board.getPositions()[nomineePosition].getFigure() != null &&
+                        board.getPositions()[nomineePosition].getFigure().getTeam() != this.getTeam()){
+                            getMoveOptions().add(board.getPositions()[nomineePosition]);
+                }
                 break;
             }
-            if (board.getPositions()[nomineePosition].getFigure().getTeam() == this.getTeam()){
-                break;
-            }
-            if (board.getPositions()[nomineePosition].getFigure().getTeam() != this.getTeam() &&
-                    board.getPositions()[nomineePosition].getFigure() != null){
-                getMoveOptions().add(board.getPositions()[nomineePosition]);
-                break;
-            }
-            else {
+            if (board.getPositions()[nomineePosition].getFigure() != null) {
+                if (board.getPositions()[nomineePosition].getFigure().getTeam() == this.getTeam()){
+                    break;
+                }
+                if (board.getPositions()[nomineePosition].getFigure().getTeam() != this.getTeam()){
+                    getMoveOptions().add(board.getPositions()[nomineePosition]);
+                    break;
+                }
+            } else {
                 getMoveOptions().add(board.getPositions()[nomineePosition]);
                 nomineePosition -= 7;
             }
@@ -100,22 +106,24 @@ public class Elephant extends Figure implements Moveable {
         while (nomineePosition >=0 && nomineePosition < 64){
             if (board.getPositions()[nomineePosition].getLetter() == 'A'
                     || board.getPositions()[nomineePosition].getDigit() == '1') {
-                if (board.getPositions()[nomineePosition].getFigure().getTeam() == this.getTeam()) {
+                if(board.getPositions()[nomineePosition].getFigure() == null){
+                    getMoveOptions().add(board.getPositions()[nomineePosition]);
                 }
-                else {
+                if(board.getPositions()[nomineePosition].getFigure() != null &&
+                        board.getPositions()[nomineePosition].getFigure().getTeam() != this.getTeam()){
                     getMoveOptions().add(board.getPositions()[nomineePosition]);
                 }
                 break;
             }
-            if (board.getPositions()[nomineePosition].getFigure().getTeam() == this.getTeam()){
-                break;
-            }
-            if (board.getPositions()[nomineePosition].getFigure().getTeam() != this.getTeam() &&
-                    board.getPositions()[nomineePosition].getFigure() != null){
-                getMoveOptions().add(board.getPositions()[nomineePosition]);
-                break;
-            }
-            else {
+            if (board.getPositions()[nomineePosition].getFigure() != null) {
+                if (board.getPositions()[nomineePosition].getFigure().getTeam() == this.getTeam()){
+                    break;
+                }
+                if (board.getPositions()[nomineePosition].getFigure().getTeam() != this.getTeam()){
+                    getMoveOptions().add(board.getPositions()[nomineePosition]);
+                    break;
+                }
+            } else {
                 getMoveOptions().add(board.getPositions()[nomineePosition]);
                 nomineePosition += 7;
             }
