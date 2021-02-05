@@ -90,7 +90,6 @@ public class Board implements Changeable {
         this.positions = positions;
     }
 
-
     @Override
     public void change(Figure figure, Coordinate start, Coordinate end) {
         for (Coordinate boardPosition :

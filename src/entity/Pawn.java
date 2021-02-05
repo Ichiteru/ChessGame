@@ -13,6 +13,7 @@ public class Pawn extends Figure {
 
     @Override
     public void fullPositionsToMove(Board board, Coordinate startPosition) {
+        getMoveOptions().clear();
         int positionNumber = 0;
         int nomineePosition = 0;
         for (int i = 0; i < 64; i++) {
